@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!-- Adicione o link para o Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/geral.css">
+    <link rel="stylesheet" href="style/cadastro.css">
+    <script type="text/javascript" src="/bootstrap_v2\assets\js\jquery\jquery-1.2.6.pack.js"></script>
+    <script type="text/javascript" src="/bootstrap_v2\assets\js\jquery\jquery.maskedinput-1.1.4.pack.js"/></script>
+</head>
+<body>
+  
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="card align-items-center justify-content-center col-12">
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'cadastroJogador')">Cadastro de Jogador</button>
+                <button class="tablinks" onclick="openTab(event, 'cadastroUsuario')">Cadastro de Usuário</button>
+            </div>
+
+        <div id="cadastroJogador" class="tabcontent">
+            <h2>Formulário de Cadastro de Jogador</h2>
+            <form id="formJogador">
+                <div class="form-group">
+                    <label for="nomeJogador">Nome completo</label>
+                    <input type="text" id="inputNome" name="nomeJogador" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailJogador">Email</label>
+                    <input type="email" id="inputEmail" name="emailJogador" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefoneJogador">Telefone</label>
+                    <input type="text" id="inputTelefone2" name="telefoneJogador" class="form-control" pattern="\([1-9]{2}\) [2-9][0-9]{3,4}-[0-9]{4}" placeholder="(XX) XXXXX-XXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpfJogador">CPF</label>
+                    <input type="text" id="inputCpf2" name="cpfJogador" class="form-control" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" placeholder="###.###.###-##" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="posicaoJogador">Posição</label>
+                    <select id="selectPosicao" name="posicaoJogador" class="form-control" required>
+                        <option value="">Selecione a posição</option>
+                        <option value="1">Goleiro</option>
+                        <option value="2">Defesa</option>
+                        <option value="3">Ataque</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="senhaJogador">Senha:</label>
+                    <input type="password" id="inputSenha" name="senhaJogador" class="form-control" required>
+                </div>
+
+                <button class="btn btn-primary">Cadastrar Jogador</button>
+            </form>
+        </div>
+
+        <div id="cadastroUsuario" class="tabcontent">
+            <h2>Formulário de Cadastro de Usuário</h2>
+            <form id="formUsuario">
+                <div class="form-group">
+                    <label for="nomeUsuario">Nome completo</label>
+                    <input type="text" id="inputNome1" name="nomeUsuario" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailUsuario">Email</label>
+                    <input type="email" id="inputEmail1" name="emailUsuario" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefoneUsuario">Telefone</label>
+                    <input type="text" id="inputTelefone1" name="telefoneUsuario" class="form-control" pattern="\([1-9]{2}\) [2-9][0-9]{3,4}-[0-9]{4}" placeholder="(XX) XXXX-XXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpfUsuario">CPF</label>
+                    <input type="text" id="inputCpf1" name="cpfUsuario" class="form-control" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" placeholder="###.###.###-##" required>
+                </div>
+
+                
+
+                <div class="form-group">
+                    <label for="senhaUsuario">Senha</label>
+                    <input type="password" id="inputSenha1" name="senhaUsuario" class="form-control" required>
+                </div>
+
+                <button class="btn btn-primary">Cadastrar Usuário</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Adicione o link para o Bootstrap JS e seu JavaScript personalizado -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="js/Cadastro.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var inputCpf1 = $("#inputCpf1");
+        inputCpf1.mask("999.999.999-99", {reverse: true});
+
+        var inputTelefone1 = $("#inputTelefone1");
+        inputTelefone1.mask("(99) 99999-9999", {reverse: true});
+
+        var inputCpf2 = $("#inputCpf2");
+        inputCpf2.mask("999.999.999-99", {reverse: true});
+
+        var inputTelefone2 = $("#inputTelefone2");
+        inputTelefone2.mask("(99) 99999-9999", {reverse: true});
+    });
+</script>
+</body>
+</html>

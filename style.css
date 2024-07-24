@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info span {
+    margin-left: 10px;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+main {
+    display: flex;
+}
+
+.filter {
+    background-color: #d4edda;
+    padding: 20px;
+    width: 300px;
+}
+
+.filter h2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.filter label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filter select {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.filter button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.events {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.events h2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.events p {
+    color: #666;
+}

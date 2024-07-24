@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogador de Aluguel</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 18px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            font-size: 23px;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 10vh;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left a {
+            margin-right: 20px;
+            margin-left: 10px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info span {
+            margin-left: 10px;
+        }
+
+        .user-icon {
+            font-size: 24px;
+        }
+
+        main {
+            display: flex;
+            height: 90vh;
+        }
+
+        .left,
+        .right {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .left {
+            background-color: #DEB887;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .left p {
+            margin-bottom: 2rem;
+        }
+
+        #criarButton {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #criarButton:hover {
+            background-color: rgb(22, 22, 22);
+        }
+
+        .right {
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        #p1 {
+            font-size: 20px;
+            text-align: start;
+            color: #666;
+        }
+
+        #p2 {
+            transform: translateY(35vh);
+            color: #666;
+            text-align: center;
+        }
+
+        .evento {
+            margin-top: 40px;
+            background-color: white;
+            padding: 25px;
+        }
+
+        .evento1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        .eventoFlex {
+            margin-top: 30px;
+            display: flex;
+        }
+
+        .evento2 {
+            width: 350px;
+            margin-right: 25px;
+        }
+
+        .evento3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background-color: #f0f0f0;
+            padding: 15px;
+            width: 300px;
+        }
+
+        .evento4 {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .evento4 button {
+            border: none;
+            border-radius: 7px;
+            font-weight: bolder;
+            width: 100%;
+            color: white;
+        }
+    </style>
+</head>
+
+<body onload="buscaEvento()">
+    <header>
+        <div class="nav">
+            <div class="nav-left">
+                <a onclick="logout()">Logout</a>
+                <a href="UsuarioEventoDados.html">Eventos</a>
+            </div>
+            <div class="nav-center">
+                <img src="imagens/logo.png" width="170px">
+            </div>
+            <div class="user-info">
+                <span>usuario@email.com</span>
+                <span class="user-icon">&#128100;</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Modal -->
+        <div class="modal fade" id="criarModal" tabindex="-1" role="dialog" aria-labelledby="criarModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="criarModalLabel">Criar evento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="criaEvento()">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputCidade">Cidade</label>
+                                    <input type="text" id="inputCidade" class="form-control" placeholder="Porto Alegre"
+                                        required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputBairro">Bairro</label>
+                                    <input type="text" id="inputBairro" class="form-control" placeholder="Humaitá" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputHorario">Data e horário</label>
+                                    <input type="datetime-local" id="inputHorario" class="form-control" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputDuracao">Duração (minutos)</label>
+                                    <input type="number" id="inputDuracao" class="form-control" placeholder="60" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputDescricao">Descrição</label>
+                                    <textarea class="form-control" id="inputDescricao" required></textarea>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPosicao">Posição</label>
+                                    <select class="form-control" id="inputPosicao" required>
+                                        <option value="">Selecione</option>
+                                        <option value="1">Goleiro</option>
+                                        <option value="2">Defesa</option>
+                                        <option value="3">Ataque</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr />
+                            <button type="submit" class="btn btn-primary">Criar</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        </form>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+
+        <section class="left">
+            <p>A procura de algum jogador para completar seu time?<br>Clique no botão abaixo para escalar um craque!</p>
+            <button id="criarButton" type="button" data-toggle="modal" data-target="#criarModal">CRIAR EVENTO</button>
+        </section>
+        <section class="right">
+            <p id="p1">Visualize aqui os eventos</p>
+            <p id="p2">Parece que você não criou nenhum evento ainda!</p>
+        </section>
+    </main>
+    <script src="js/UsuarioEventoDados.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
