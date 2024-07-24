@@ -151,6 +151,6 @@ function logout() {
   localStorage.setItem("idConta", null);
   localStorage.setItem("emailConta", null);
   alert("Logout realizado com sucesso! \nRedirecionando para tela Home");
-  window.location.href = "home.html";
+  window.location.href = "index.html";
 }
 
